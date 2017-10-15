@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>在线购票系统</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/dependencies/bootstrap/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+        }
+    </style>
+</head>
+<body>
+    <div th:include="base::header"></div>
+
+    <div class="container">
+        <h1>欢迎来到在线购票系统</h1>
+    </div>
+
+    <div th:include="base::footer"></div>
+
+    <div th:include="base::script"></div>
+</body>
+</html>

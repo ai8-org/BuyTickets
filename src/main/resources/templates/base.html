@@ -1,0 +1,119 @@
+<div th:fragment="header" id="header">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index">BuyTickets</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/index">首页 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="/about">关于 <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#login">登陆</button>
+                    <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#register" style="color: white; background: rgb(89, 177, 51);">注册</button>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- Sign in -->
+    <form method="post" action="/user/login">
+        <div class="modal fade" id="login" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">登陆</h4>
+                    </div>
+                    <div class="modal-body vki-modal-body">
+                        <label>邮箱</label>
+                        <input type="text" class="form-control vki-focus" name="mail" placeholder="test@ai8.org">
+                        <label class="vki-label">密码</label>
+                        <input type="password" class="form-control vki-passwd" name="password" placeholder="Password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">登陆</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Sign up -->
+    <form method="post" action="/user/register">
+        <div class="modal fade" id="register" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">注册</h4>
+                    </div>
+                    <div class="modal-body vki-modal-body">
+                        <label id="mail-check-msg">邮箱</label>
+                        <input type="text" class="form-control vki-focus" name="mail" placeholder="test@ai8.org">
+                        <label class="vki-label">昵称</label>
+                        <input type="text" class="form-control" name="nickname" placeholder="nickname">
+                        <label class="vki-label">密码</label>
+                        <input type="password" class="form-control vki-passwd" id="register-password" name="password" placeholder="密码长度至少4位">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" id="btn-sign-up">注册</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="footer" id="footer">
+    <div class="footer">
+        <div class="container">
+            <p class="text-muted text-center">Copyright © 2017 <strong>AI8</strong>.org All Rights Reserved</p>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="script">
+    <!--jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/dependencies/jquery/jquery-3.2.1.min.js}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script th:src="@{/dependencies/bootstrap/bootstrap-3.3.7/js/bootstrap.js}"></script>
+
+    <script>
+        (function(){
+        })();
+        $(function() {
+            $(".vki-modal-body .vki-label").css("margin-top", "10px");
+        });
+        $('#login, #register').on('shown.bs.modal', function () {
+            $('.vki-focus').focus();
+        });
+
+//        $('#register-username').blur(function() {
+//            var username = $(this).val();
+//            if(username == '') {
+//                $('#username-check-msg').html('Username <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color: red;"></span><p>Error: Please input your username!</p>');
+//            } else {
+//                $.get('/user/check-username', {'username': username}, function(result) {
+//                    if(result == "True") {
+//                        $('#username-check-msg').html('Username <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color: red;"></span><p>Error: The username has been used!</p>');
+//                    } else {
+//                        $('#username-check-msg').html('Username <span class="glyphicon glyphicon-ok" aria-hidden="true" style="color: green;"></span>');
+//                        is_username_ok = true;
+//                    }
+//                });
+//            }
+//        });
+    </script>
+</div>

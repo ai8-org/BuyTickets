@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>车票查询</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/dependencies/bootstrap/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+        }
+    </style>
+</head>
+<body>
+    <div th:include="base::header"></div>
+
+    <div class="container">
+        <h1>车票查询</h1>
+    </div>
+
+    <div class="container">
+        <!-- Table -->
+        <table class="table tickets-msg">
+        <thead>
+        <tr>
+            <th>车次</th><th>车站</th><th>时间</th><th>历时</th><th>一等</th><th>二等</th><th>软卧</th><th>硬卧</th><th>硬座</th><th>无座</th><th>票价</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t:${data}">
+            <td th:text="${t.train_no}"></td>
+            <td th:text="${t.station}"></td>
+            <td th:text="${t.time}"></td>
+            <td th:text="${t.duration}"></td>
+            <td th:text="${t.zy_num}"></td>
+            <td th:text="${t.ze_num}"></td>
+            <td th:text="${t.rw_num}"></td>
+            <td th:text="${t.yw_num}"></td>
+            <td th:text="${t.yz_num}"></td>
+            <td th:text="${t.wz_num}"></td>
+            <td th:text="${t.price}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    </div>
+
+    <div th:include="base::footer"></div>
+
+    <div th:include="base::script"></div>
+</body>
+</html>
