@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>车票查询</title>
+    <title>已定车票</title>
 
     <!-- Bootstrap -->
     <link th:href="@{/dependencies/bootstrap/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet">
@@ -25,7 +25,7 @@
     <div th:include="base::header"></div>
 
     <div class="container">
-        <h1>车票查询</h1>
+        <h1>已定车票</h1>
     </div>
 
     <div class="container">
@@ -37,7 +37,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="t:${data}">
+        <tr th:each="t:${tickets}">
             <td th:text="${t.train_no}"></td>
             <td th:text="${t.station}"></td>
             <td th:text="${t.time}"></td>
@@ -49,7 +49,7 @@
             <td th:text="${t.yz_num}"></td>
             <td th:text="${t.wz_num}"></td>
             <td th:text="${t.price}"></td>
-            <td><button type="button" class="btn btn-default buy-ticket">购买<div th:text="${t.id}" hidden="hidden"></div></button></td>
+            <td><button type="button" class="btn btn-default refund-ticket">退订<div th:text="${t.id}" hidden="hidden"></div></button></td>
         </tr>
 
         </tbody>
@@ -60,9 +60,9 @@
 
     <div th:include="base::script"></div>
     <script>
-        $(".buy-ticket").click(function() {
+        $(".refund-ticket").click(function() {
             var ticketId = $(this).children("div")[0].innerText;
-            window.location = "/buy?id=" + ticketId;
+            window.location = "/refund?id=" + ticketId;
         });
     </script>
 </body>

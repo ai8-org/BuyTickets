@@ -1,4 +1,4 @@
-<div th:fragment="header" id="header">
+<div th:fragment="header" id="header" xmlns:th="http://www.w3.org/1999/xhtml">
     <nav class="navbar navbar-default">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,18 +9,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index">BuyTickets</a>
+                <a class="navbar-brand" href="/">BuyTickets</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="/index">首页 <span class="sr-only">(current)</span></a></li>
-                    <li class=""><a href="/about">关于 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="/user/cart">购物车 <span class="sr-only">(current)</span></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#login">登陆</button>
-                    <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#register" style="color: white; background: rgb(89, 177, 51);">注册</button>
+                    <div th:if="${user.mail} eq null">
+                        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#login">登陆</button>
+                        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#register" style="color: white; background: rgb(89, 177, 51);">注册</button>
+                    </div>
+                    <div th:if="${user.mail} ne null">
+                        <div th:text="用户， + ${user.nickname}"></div>
+                    </div>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
