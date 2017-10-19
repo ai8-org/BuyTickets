@@ -1,8 +1,5 @@
 package org.ai8.buytickets;
 
-import javafx.beans.DefaultProperty;
-import org.hibernate.annotations.ColumnDefault;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
